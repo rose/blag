@@ -60,6 +60,16 @@ THEME = "bootdark"
 CODE_COLOR_SCHEME = 'friendly'
 EXTRA_HEAD_DATA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono\">"
 
+DEPLOY_COMMANDS = [
+    "git add posts/*",
+    "git add output/*",
+    "git commit -m\"automatic deploy commit\"",
+    "git subtree split --prefix output -b deploy",
+    "git push deploy deploy:master",
+    "git branch -D deploy"
+    ]
+
+
 COMMENT_SYSTEM = "disqus"
 COMMENT_SYSTEM_ID = "superluser"
 
@@ -89,7 +99,6 @@ LOGGING_HANDLERS = { 'stderr': {'loglevel': 'WARNING', 'bubble': True}, }
 
 GLOBAL_CONTEXT = {}
 
-# DEPLOY_COMMANDS = []
 
 # FILES_FOLDERS = {'files': '' }
 OUTPUT_FOLDER = 'output/'
